@@ -1,0 +1,51 @@
+import java.util.Arrays;
+public class Main {
+
+    public static int[] insert(int[] a, int key, int index) {
+        int[] result = new int[a.length + 1];
+        for (int i = 0; i < index; i++) {
+            result[i] = a[i];
+        }
+        result[index] = key;
+        for (int i = index + 1; i <= a.length; i++) {
+            result[i] = a[i - 1];
+        }
+        return result;
+    }
+    public static int[] deleteTheElement(int[] arr, int index){
+        if (arr == null || index < 0 || index >= arr.length) {
+            return arr;
+        }
+        int[] anotherArray = new int[arr.length - 1];
+        for (int i = 0, k = 0; i < arr.length; i++) {
+            if (i == index) {
+                continue;
+            }
+            anotherArray[k++] = arr[i];
+        }
+        return anotherArray;
+    }
+    public static void main(String[] args) {
+        int[] array = new int[]{1, 2, 3,4};
+        System.out.println(Arrays.toString(array));
+        array = Arrays.copyOf(array, array.length + 1);
+        array[array.length - 1] = 5;
+        System.out.println(Arrays.toString(array));
+        System.out.println(".............................................................");
+            int[] a = {1, 2, 4, 5};
+            int key = 3;
+            int index = 2;
+            a = insert(a, key, index);
+            System.out.println("\nAfter insert 3 into an Array" + Arrays.toString(a));
+        System.out.println(".........................................................");
+        int[] arr = { 1, 2, 3, 4, 5 };
+        System.out.println("Original Array: " + Arrays.toString(arr));
+        int indexx = 4;
+        System.out.println("Index to be deleted: " + indexx);
+        arr = deleteTheElement(arr, indexx);
+        System.out.println("Resultant Array: " + Arrays.toString(arr));
+
+    }
+   }
+
+
